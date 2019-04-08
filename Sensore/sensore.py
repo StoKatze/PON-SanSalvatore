@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
+import subprocess
 
 while True:
 	try:
@@ -39,5 +40,9 @@ while True:
 
 	      if(distance < 100): #Trigger distanza
 		GPIO.output(PIN_LED, GPIO.HIGH)
+		processo = subprocess.check_output(['python3', 'video.py'])
+		#time.sleep(30)
+		GPIO.output(PIN_LED, GPIO.LOW)
 	finally:
 		GPIO.cleanup()
+
