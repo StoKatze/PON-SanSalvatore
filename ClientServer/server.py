@@ -1,30 +1,27 @@
 # Programma server
 import socket
 import time
+import subprocess
 
 while True:
-	HOST = '127.0.0.1'        # Indirizzo host
-	PORT = 50007              # Porta
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.bind((HOST, PORT))
-	s.listen(1)
-	conn, addr = s.accept()
-	print('Connected by', str(addr)) #Stampa sorgente connessione
+	HOST = '192.169.203.81' # Indirizzo host
+	PORT = 50007 # Porta
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #Crea l'oggetto socket
+	s.bind((HOST, PORT)) # Assegna indirizzo e porta al socket
+	s.listen(1) # Rimane in attesa della connessione del client
+	conn, addr = s.accept() # Accetta la connessione
+	print('Connected by', str(addr)) # Stampa sorgente connessione
 	while True:
 		data = conn.recv(1024) # Riceve dati
-		rcvd = data.decode()
-		if rcvd == 'inizio':
-			time.sleep(30) # Attesa di 30 secondi prima di iniziare la riproduzione
-			print('Avvio')
-			lunghezzaVideoSecondi = 30 # Durata del video in secondi (approssimata per eccesso)
-			player = subprocess.Popen(['omxplayer', '-b' , 'test.mp4']) # Apre il player
-			time.sleep(lunghezzaVideoSecondi) # Mette in attesa il programma fin quando non termina la riproduzione
-			player.kill() # Chiude il player
-			break
-		if rcvd == 'fine':
-			print('Termino')
-			player.kill()
-			break
-		elif not data: break
-	conn.send(data.encode('utf-8'))
-	conn.close()
+		rcvd = data.decode() # Decodifica i dati appena ricevuti
+		if rcvd == 'inizio': # Se viene ricevuta la stringa di inizio
+			print('Avvio') # Debug
+			player = subprocess.check_output(['omxplayer', '-b' , 'test.mp4']) # Apre il player
+			break # Una volta terminato esce dal ciclo
+		if rcvd == 'fine': # Se riceve la stringa di terminazione
+			print('Termino') # Debug
+			break # Esce dal ciclo
+		elif not data: break # Se non diceve dati termina e torna in ascolto
+	conn.send(data.encode('utf-8')) # Invia segnale chiusura connessione
+	conn.close() # Chiude la connessione e torna in attesa
+
