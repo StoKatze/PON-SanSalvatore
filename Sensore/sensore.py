@@ -5,44 +5,44 @@ import subprocess
 
 while True:
 	try:
-	      GPIO.setmode(GPIO.BOARD)
+	      GPIO.setmode(GPIO.BOARD) # Imposta la modalita' GPIO in BOARD. Cosi si possono usare direttamente i numeri dei pin
 
-	      PIN_TRIGGER = 7
-	      PIN_ECHO = 11
-	      PIN_LED = 13
-	      GPIO.setup(PIN_TRIGGER, GPIO.OUT)
-	      GPIO.setup(PIN_ECHO, GPIO.IN)
-	      GPIO.setup(PIN_LED, GPIO.OUT)
-	      GPIO.output(PIN_LED, GPIO.LOW)
-	      GPIO.output(PIN_TRIGGER, GPIO.LOW)
+	      PIN_TRIGGER = 7 # Assegna il controllo trigger al pin 7 (emissione ultrasuoni)
+	      PIN_ECHO = 11 # Assegna il controllo echo al pin 11 (ricezione onde sonore)
+	      PIN_LED = 13 # Assegna il pin 13 al LED per il debug
+	      GPIO.setup(PIN_TRIGGER, GPIO.OUT) # Imposta il trigger come output
+	      GPIO.setup(PIN_ECHO, GPIO.IN) # Imposta l'echo come input
+	      GPIO.setup(PIN_LED, GPIO.OUT) # Imposta il led come output
+	      GPIO.output(PIN_LED, GPIO.LOW) # Spegne il led
+	      GPIO.output(PIN_TRIGGER, GPIO.LOW) # Disattiva l'emissione degli ultrasuoni
 
-	      print "Waiting for sensor to settle"
+	      print "Waiting for sensor to settle" # Debug
+ 
+	      time.sleep(0.01) # Attende che il sensore si sistemi
 
-	      time.sleep(0.01)
+	      print "Calculating distance" # Debug
 
-	      print "Calculating distance"
+	      GPIO.output(PIN_TRIGGER, GPIO.HIGH) # Emette gli ultrasuoni per un tempo brevissimo
 
-	      GPIO.output(PIN_TRIGGER, GPIO.HIGH)
+	      time.sleep(0.00001) # Leggere sopra
 
-	      time.sleep(0.00001)
+	      GPIO.output(PIN_TRIGGER, GPIO.LOW) # Interrompe l'emissione di ultrasuoni
 
-	      GPIO.output(PIN_TRIGGER, GPIO.LOW)
-
-	      while GPIO.input(PIN_ECHO)==0:
+	      while GPIO.input(PIN_ECHO)==0: # Ottiene il tempo in cui sono stati emessi gli ultrasuoni
 	            pulse_start_time = time.time()
-	      while GPIO.input(PIN_ECHO)==1:
+	      while GPIO.input(PIN_ECHO)==1: # Ottiene il tempo in cui sono stati ricevuti gli ultrasuoni
 	            pulse_end_time = time.time()
 
-	      pulse_duration = pulse_end_time - pulse_start_time
-	      distance = round(pulse_duration * 17150, 2)
-	      print "Distance:",distance,"cm"
-	      time.sleep(0.1)
+	      pulse_duration = pulse_end_time - pulse_start_time # Calcola la durata dell'impulso
+	      distance = round(pulse_duration * 17150, 2) # Calcola la distanza
+	      print "Distance:",distance,"cm" # Debug
+	      time.sleep(0.1) # Breve attesa per la lettura
 
 	      if(distance < 100): #Trigger distanza
-		GPIO.output(PIN_LED, GPIO.HIGH)
-		processo = subprocess.check_output(['python3', 'video.py'])
-		#time.sleep(30)
-		GPIO.output(PIN_LED, GPIO.LOW)
+		GPIO.output(PIN_LED, GPIO.HIGH) # Accensione LED
+		server = subprocess.Popen(['python', 'inizio.py']) # Invio segnale di avvio al secondo raspberry
+		processo = subprocess.check_output(['python3', 'video.py']) # Inizio riproduzione video fuoco
+		GPIO.output(PIN_LED, GPIO.LOW) # Spegne il LED
 	finally:
-		GPIO.cleanup()
+		GPIO.cleanup() # Libera i pin GPIO
 
