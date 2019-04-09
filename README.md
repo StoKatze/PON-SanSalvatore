@@ -22,7 +22,7 @@ Al rilevamento di un movimento, la fase di ascolto del sensore viene interrotta 
 * [video.py](Riproduzione/video.py) che avvia la riproduzione di un secondo file video
 
 Entrambi i file video saranno di uguale lunghezza. In particolare il video riprodotto da 1 è formato da una clip ripetuta tante volte fino a raggiugnere la lunghezza del file desiderata. Il video riprodotto da 2, invece, comprende 30 secondi iniziali di vuoto (schermo nero) per permettere ai visitatori di entrare nella stanza. 
-Al termine di entrambi i video lo script [sensore.py](Sensore/sensore.py) riprenderà a rilevare movimenti.
+Al termine di entrambi i video, lo script [sensore.py](Sensore/sensore.py) riprenderà a rilevare movimenti.
 
 Lo script [fine.py](ClientServer/fine.py) non viene mai utilizzato. Serve per terminare il processo del server.
 
