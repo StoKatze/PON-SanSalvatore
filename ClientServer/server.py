@@ -2,6 +2,7 @@
 import socket
 import time
 import subprocess
+import sys
 
 while True:
 	HOST = '192.169.203.81' # Indirizzo host
@@ -20,7 +21,7 @@ while True:
 			break # Una volta terminato esce dal ciclo
 		if rcvd == 'fine': # Se riceve la stringa di terminazione
 			print('Termino') # Debug
-			break # Esce dal ciclo
+			sys.exit() # Termina lo script del server
 		elif not data: break # Se non diceve dati termina e torna in ascolto
 	conn.send(data.encode('utf-8')) # Invia segnale chiusura connessione
 	conn.close() # Chiude la connessione e torna in attesa
