@@ -9,7 +9,7 @@ Gli script sono realizzati in Python.
 
 ## Componenti
 * Raspberry Pi
-* Sensore di prossimità HC-SR04
+* Sensore di prossimità HC-SR04 ([Schema elettrico solo sensore](https://cdn.pimylifeup.com/wp-content/uploads/2018/03/Distance-Sensor-Fritz.png)) oppure ([Schema elettrico con LED](https://raw.githubusercontent.com/StoKatze/PON-SanSalvatore/master/img/schemaelettricoled.jpg))
 * LED
 
 ## Sul raspberry sono installati
