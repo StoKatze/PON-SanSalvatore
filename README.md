@@ -29,7 +29,7 @@ Lo script [fine.py](ClientServer/fine.py) non viene mai utilizzato. Serve per te
 ## Componenti
 * Raspberry Pi 3 Model B
 * Proiettori vari
-* Sensore di prossimità HC-SR04 ([Schema elettrico solo sensore](https://cdn.pimylifeup.com/wp-content/uploads/2018/03/Distance-Sensor-Fritz.png)) oppure ([Schema elettrico con LED](https://raw.githubusercontent.com/StoKatze/PON-SanSalvatore/master/img/schemaelettricoled.jpg))
+* Sensore di prossimità HC-SR04 ([Schema elettrico solo sensore](https://cdn.pimylifeup.com/wp-content/uploads/2018/03/Distance-Sensor-Fritz.png)) oppure ([Schema elettrico con LED](https://raw.githubusercontent.com/StoKatze/PON-SanSalvatore/master/img/schemaled.png)) ([Collegamenti su breadbord](https://raw.githubusercontent.com/StoKatze/PON-SanSalvatore/master/img/schemaelettricoled.jpg))
 * LED e altri componenti elettrici (resistenze, cavi)
 
 ## Sul raspberry sono installati
