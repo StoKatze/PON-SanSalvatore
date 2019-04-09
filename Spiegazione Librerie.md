@@ -5,3 +5,4 @@
 * subprocess - Creazione sottoprocessi direttamente negli script
 * time - Interruzione temporanea dell'esecuzione (mediante time.sleep(secondi))
 * socket - Creazione socket per client/server
+* sys - Chiusura script Python
