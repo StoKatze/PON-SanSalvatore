@@ -17,7 +17,7 @@ Ad ogni Raspberry Pi è collegato un proiettore tramite HDMI. Risoluzione impost
 
 # Funzionamento
 Sul primo Raspberry (1) verrà eseguito lo script [sensore.py](Sensore/sensore.py) che rileverà eventuali movimenti. E' stato preferito un sensore ad ultrasuoni in quanto un sensore IR potrebbe non funzionare correttamente in quanto la stanza potrebbe non essere illuminata a sufficienza. Sul secondo Raspberry (2) viene avviato lo script [server.py](ClientServer/server.py) che rimane in attesa di messaggi da parte di 1.
-Al rilevamento di un movimento la fase di ascolto del sensore viene interrotta e vengono lanciati due script:
+Al rilevamento di un movimento, la fase di ascolto del sensore viene interrotta e vengono lanciati due script:
 * [inizio.py](ClientServer/inizio.py) che comunica a 2 di avviare la riproduzione di un file video
 * [video.py](Riproduzione/video.py) che avvia la riproduzione di un secondo file video
 
