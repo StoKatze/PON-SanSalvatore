@@ -2,6 +2,7 @@
 import socket
 import time
 import subprocess
+import sys
 
 immagine = subprocess.Popen(['python3', 'immagine.py']) # Schermo nero per nascondere l'output 
 
@@ -22,6 +23,7 @@ while True:
 			break # Una volta terminato esce dal ciclo
 		if rcvd == 'fine': # Se riceve la stringa di terminazione
 			print('Termino') # Debug
+			sys.exit() # Termina lo script del server
 			break # Esce dal ciclo
 		elif not data: break # Se non diceve dati termina e torna in ascolto
 	conn.close() # Chiude la connessione e torna in attesa
