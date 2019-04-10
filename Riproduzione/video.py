@@ -6,8 +6,5 @@ import subprocess
 import time
 import sys
 
-#lunghezzaVideoSecondi = 30 # Durata del video in secondi (approssimata per eccesso)
 player = subprocess.check_output(['omxplayer', '-b' , 'test.mp4']) # Apre il player
-#time.sleep(lunghezzaVideoSecondi) # Mette in attesa il programma fin quando non termina la riproduzione
-player.kill() # Chiude il player
 sys.exit() # Termina lo script
