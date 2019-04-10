@@ -2,7 +2,7 @@ import socket
 import time
 import sys
 
-HOST = '192.169.203.81' # Indirizzo del server
+HOST = '192.169.203.168' # Indirizzo del server
 PORT = 50007 # La stessa porta usata dal server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Crea l'oggetto socket
 s.connect((HOST, PORT)) # Connessione al server
