@@ -3,6 +3,8 @@ import RPi.GPIO as GPIO
 import time
 import subprocess
 
+immagine = subprocess.Popen(['python3', 'immagine.py']) # Schermo nero per nascondere la console ed il desktop
+
 while True:
 	try:
 	      GPIO.setmode(GPIO.BOARD) # Imposta la modalita' GPIO in BOARD. Cosi si possono usare direttamente i numeri dei pin
