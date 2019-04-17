@@ -4,6 +4,9 @@ import time
 import subprocess
 import sys
 
+# Modalità debug:
+# Se si avvia lo script specificando come argomento "d" si abiliterà la modalità di debug, ovvero la console rimarrà visibile e non sarà mostrato lo schermo nero.
+# Altrimenti, avviando lo script con qualsiasi altro argomento (necessario almeno uno) lo script funzionerà normalmente (schermata nera per nascondere il Desktop).
 if (sys.argv[1] == "d"):
 	print ("Debug mode attivata")
 else:
