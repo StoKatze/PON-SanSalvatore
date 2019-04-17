@@ -2,8 +2,12 @@
 import RPi.GPIO as GPIO
 import time
 import subprocess
+import sys
 
-immagine = subprocess.Popen(['python3', 'immagine.py']) # Schermo nero per nascondere la console ed il desktop
+if (sys.argv[1] == "d"):
+	print "Debug mode attivata"
+else:
+	immagine = subprocess.Popen(['python3', 'immagine.py'])
 
 while True:
 	try:
@@ -19,7 +23,7 @@ while True:
 	      GPIO.output(PIN_TRIGGER, GPIO.LOW) # Disattiva l'emissione degli ultrasuoni
 
 	      print "Waiting for sensor to settle" # Debug
- 
+
 	      time.sleep(0.01) # Attende che il sensore si sistemi
 
 	      print "Calculating distance" # Debug
@@ -40,7 +44,7 @@ while True:
 	      print "Distance:",distance,"cm" # Debug
 	      time.sleep(0.1) # Breve attesa per la lettura
 
-	      if(distance < 100): #Trigger distanza
+	      if(distance < 290): #Trigger distanza
 		GPIO.output(PIN_LED, GPIO.HIGH) # Accensione LED
 		server = subprocess.Popen(['python', 'inizio.py']) # Invio segnale di avvio al secondo raspberry
 		processo = subprocess.check_output(['python3', 'video.py']) # Inizio riproduzione video fuoco
@@ -48,3 +52,5 @@ while True:
 	finally:
 		GPIO.cleanup() # Libera i pin GPIO
 
+
+immagine.exit()
