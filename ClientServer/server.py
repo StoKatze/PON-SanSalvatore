@@ -4,7 +4,10 @@ import time
 import subprocess
 import sys
 
-immagine = subprocess.Popen(['python3', 'immagine.py']) # Schermo nero per nascondere l'output 
+if (sys.argv[1] == "d"):
+	print ("Debug mode attivata")
+else:
+	immagine = subprocess.Popen(['python3', 'immagine.py'])
 
 HOST = '192.169.203.168' # Indirizzo host
 PORT = 50007 # Porta
@@ -19,12 +22,12 @@ while True:
 		rcvd = data.decode() # Decodifica i dati appena ricevuti
 		if rcvd == 'inizio': # Se viene ricevuta la stringa di inizio
 			print('Avvio') # Debug
-			player = subprocess.check_output(['omxplayer', '-b' , 'test.mp4']) # Apre il player
+			player = subprocess.check_output(['omxplayer', '-b' , 'frate.mp4']) # Apre il player
 			break # Una volta terminato esce dal ciclo
 		if rcvd == 'fine': # Se riceve la stringa di terminazione
 			print('Termino') # Debug
-			sys.exit() # Termina lo script del server
 			break # Esce dal ciclo
 		elif not data: break # Se non diceve dati termina e torna in ascolto
+	#conn.send(data.encode('utf-8')) # Invia segnale chiusura connessione
 	conn.close() # Chiude la connessione e torna in attesa
 
