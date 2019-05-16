@@ -27,7 +27,7 @@ Al termine di entrambi i video, lo script [sensore.py](Sensore/sensore.py) ripre
 Lo script [fine.py](ClientServer/fine.py) non viene mai utilizzato. Serve per terminare il processo del server.
 
 ### Debug Mode
-Avviando gli script [inizio.py](ClientServer/inizio.py) e [server.py](ClientServer/server.py) occorre specificare un argomento di avvio (una lettera, sostanzialmente). Se come argomento viene specificato "d" allora questi saranno avviati in modalità debug, ovvero lo schermo non diventerà nero, rendendo visibili sulla finestra del terminale eventuali messaggi di errori.
+Avviando gli script [sensore.py](Sensore/sensore.py) e [server.py](ClientServer/server.py) occorre specificare un argomento di avvio (una lettera, sostanzialmente). Se come argomento viene specificato "d" allora questi saranno avviati in modalità debug, ovvero lo schermo non diventerà nero, rendendo visibili sulla finestra del terminale eventuali messaggi di errori.
 
 ## Componenti
 * Raspberry Pi 3 Model B
